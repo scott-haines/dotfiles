@@ -1,0 +1,83 @@
+[bar/bottom]
+
+monitor = VGA-1
+
+width = 100%
+height = 27
+offset-y = 0
+offset-x = 0
+
+border-top-size = 10
+border-bottom-size = 0
+border-right-size = 10
+border-left-size = 10
+
+bottom = true
+font-0 = Hack:size=10;3
+font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=12;3"
+font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;3"
+font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
+
+background = 0
+foreground = #c5a9f9
+border-color = 0
+
+fixed-center = true
+padding-left = 2
+padding-right = 2
+module-margin = 1.5
+
+modules-left = i3 title
+modules-center = date
+modules-right = cpu fs-root fs-home
+
+tray-position = none
+tray-detached = true
+
+[module/i3]
+type = internal/i3
+
+pin-workspaces = true
+strip-wsnumbers = true
+enable-scroll = false
+
+label-unfocused-foreground = #afafaf
+label-focused-foreground = #c5a9f9
+label-urgent-foreground = #ff0000c
+
+[module/cpu]
+type = internal/cpu
+interval = 1
+format = <label>
+label =  %percentage%%
+
+[module/date]
+type = internal/date
+interval = 60
+date = %A, %d %B %Y
+time = %I:%M %p
+format = <label>
+
+[module/title]
+type = internal/xwindow
+format = <label>
+label = %title%
+label-maxlen = 100
+
+[module/fs-root]
+type = internal/fs
+mount-0 = /
+interval = 30
+fixed-values = true
+format-mounted = <label-mounted>
+format-unmounted = <label-unmounted>
+label-mounted =  (/) %percentage_used%%
+
+[module/fs-home]
+type = internal/fs
+mount-0 = /home
+interval = 30
+fixed-values = true
+format-mounted = <label-mounted>
+format-unmounted = <label-unmounted>
+label-mounted =  (/home) %percentage_used%%
