@@ -90,3 +90,15 @@ bindsym $mod+Shift+0            move container to workspace $ws10
 #### application assignments ####
 assign [class="Firefox"] $ws1
 assign [class="code"] $ws4
+
+#### features ####
+bindsym $mod+l                  mode "$mode_system"
+set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id blurlock, mode "default"
+    bindsym u exec --no-startup-id dm-tool switch-to-greeter, mode "default"
+
+    # exit mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
