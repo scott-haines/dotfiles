@@ -1,4 +1,4 @@
-[bar/bottom]
+[bar/top]
 
 monitor = VGA-1
 
@@ -7,12 +7,12 @@ height = 27
 offset-y = 0
 offset-x = 0
 
-border-top-size = 10
+border-top-size = 0
 border-bottom-size = 0
-border-right-size = 10
-border-left-size = 10
+border-right-size = 0
+border-left-size = 0
 
-bottom = true
+bottom = false
 font-0 = "Droid Sans Mono:pixelsize=12;3"
 font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=12;3"
 font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=12;3"
@@ -21,6 +21,7 @@ font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
 background = 0
 foreground = #a9a9ad
 border-color = 0
+line-size = 1
 
 fixed-center = true
 padding-left = 2
@@ -36,31 +37,59 @@ tray-detached = true
 
 [module/i3]
 type = internal/i3
+index-sort = true
+enable-click = true
+enable-scroll = true
+fuzzy-match = false
 
-pin-workspaces = true
-strip-wsnumbers = true
-enable-scroll = false
+format = <label-state> <label-mode>
 
+label-mode = %mode%
+label-mode-padding = 1
+
+label-focused = %icon%
+label-focused-underline = #ffff0000
+label-focused-foreground = #ff0000
+label-focused-padding = 1
+
+label-unfocused = %icon%
 label-unfocused-foreground = #a9a9ad
-label-focused-foreground = #c5a9f9
-label-urgent-foreground = #ff0000c
+label-unfocused-padding = 1
+
+label-urgent = %icon%
+label-urgent-foreground = #ff0000
+label-urgent-padding = 1
+
+ws-icon-0 = 1;1 
+ws-icon-1 = 2;2 
+ws-icon-2 = 3;3 
+ws-icon-3 = 4;4 
+ws-icon-4 = 5;5 
+ws-icon-5 = 6;6 
+ws-icon-6 = 7;7 
+ws-icon-7 = 8;8 
+ws-icon-8 = 9;9 
+ws-icon-9 = 10;10 
 
 [module/cpu]
 type = internal/cpu
 interval = 1
 format = <label>
+format-underline = #ffff0000
 label =  %percentage%%
 
 [module/memory]
 type = internal/memory
 interval = 3
 format = <label>
+format-underline = #ff149906
 label =  %percentage_used%%
 
 [module/network]
 type = internal/network
 interface = enp0s3
 format = <label-connected>
+format-connected-underline = #ff1b42c1
 label-connected =  %ifname%  %upspeed%  %downspeed%
 
 [module/date]
@@ -82,6 +111,7 @@ type = internal/fs
 mount-0 = /
 interval = 30
 fixed-values = true
+format-mounted-underline = #ffb31bc1
 format-mounted = <label-mounted>
 format-unmounted = <label-unmounted>
 label-mounted =  (/) %percentage_used%%
@@ -91,6 +121,7 @@ type = internal/fs
 mount-0 = /home
 interval = 30
 fixed-values = true
+format-mounted-underline = #ffb31bc1
 format-mounted = <label-mounted>
 format-unmounted = <label-unmounted>
 label-mounted =  (/home) %percentage_used%%
