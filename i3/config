@@ -15,7 +15,7 @@ for_window [instance="dropdown_*"] sticky enable
 for_window [instance="dropdown_*"] scratchpad show
 
 #### starting scripts ####
-
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 #### basic bindings ####
 bindsym $mod+Return             exec $term
@@ -32,6 +32,8 @@ bindsym $mod+f                  fullscreen toggle
 #### key bindings ####
 bindsym $mod+q                  [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
 bindsym $mod+Shift+q            [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
+
+bindsym $mod+r                  exec --no-startup-id rofi -show run
 
 bindsym $mod+t                  split toggle
 

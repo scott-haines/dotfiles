@@ -13,13 +13,13 @@ border-right-size = 10
 border-left-size = 10
 
 bottom = true
-font-0 = Hack:size=10;3
-font-1 = "Font Awesome 5 Free:style=Solid:pixelsize=12;3"
-font-2 = "Font Awesome 5 Free:style=Regular:pixelsize=12;3"
+font-0 = "Droid Sans Mono:pixelsize=12;3"
+font-1 = "Font Awesome 5 Free:style=Regular:pixelsize=12;3"
+font-2 = "Font Awesome 5 Free:style=Solid:pixelsize=12;3"
 font-3 = "Font Awesome 5 Brands:pixelsize=12;3"
 
 background = 0
-foreground = #c5a9f9
+foreground = #a9a9ad
 border-color = 0
 
 fixed-center = true
@@ -29,7 +29,7 @@ module-margin = 1.5
 
 modules-left = i3 title
 modules-center = date
-modules-right = cpu fs-root fs-home
+modules-right = cpu memory network fs-root fs-home
 
 tray-position = none
 tray-detached = true
@@ -41,7 +41,7 @@ pin-workspaces = true
 strip-wsnumbers = true
 enable-scroll = false
 
-label-unfocused-foreground = #afafaf
+label-unfocused-foreground = #a9a9ad
 label-focused-foreground = #c5a9f9
 label-urgent-foreground = #ff0000c
 
@@ -51,12 +51,25 @@ interval = 1
 format = <label>
 label =  %percentage%%
 
+[module/memory]
+type = internal/memory
+interval = 3
+format = <label>
+label =  %percentage_used%%
+
+[module/network]
+type = internal/network
+interface = enp0s3
+format = <label-connected>
+label-connected =  %ifname%  %upspeed%  %downspeed%
+
 [module/date]
 type = internal/date
 interval = 60
-date = %A, %d %B %Y
+date = %Y-%m-%d%
 time = %I:%M %p
 format = <label>
+label = %date% %time%
 
 [module/title]
 type = internal/xwindow

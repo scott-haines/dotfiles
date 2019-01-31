@@ -1,5 +1,5 @@
 [options]
-font = inconsolata 12
+font = Droid Sans Mono 12
 
 # "block", "underline" or "ibeam"
 cursor_shape = ibeam
