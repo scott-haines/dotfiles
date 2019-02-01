@@ -16,6 +16,8 @@ for_window [instance="dropdown_*"] scratchpad show
 
 #### starting scripts ####
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec_always --no-startup-id feh --bg-fill $HOME/.config/wallpaper.png
+exec_always --no-startup-id betterlockscreen -u $HOME/.config/wallpaper.png
 
 #### basic bindings ####
 bindsym $mod+Return             exec $term
@@ -35,6 +37,8 @@ bindsym $mod+Shift+r            restart
 #### key bindings ####
 bindsym $mod+q                  [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
 bindsym $mod+Shift+q            [con_id="__focused__" instance="^(?!dropdown_).*$"] kill
+
+bindsym $mod+e                  exec --no-startup-id $term -e ranger
 
 bindsym $mod+r                  exec --no-startup-id rofi -show run
 
@@ -93,9 +97,10 @@ assign [class="code"] $ws4
 
 #### features ####
 bindsym $mod+l                  mode "$mode_system"
+bindsym $mod+Shift+l            mode "$mode_system"
 set $mode_system (l)ock, (e)xit, switch_(u)ser, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id blurlock, mode "default"
+    bindsym l exec --no-startup-id betterlockscreen --lock blur, mode "default"
     bindsym u exec --no-startup-id dm-tool switch-to-greeter, mode "default"
 
     # exit mode
